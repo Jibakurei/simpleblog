@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>New post</h1>
+    <form action="/edit/{{Articlelist.id}}/" method="POST" class="post-form">{% csrf_token %}
+        <input type="text" name="title" value="{{Articlelist.title}}"/>
+        <input type="text" name="content" value="{{Articlelist.content}}"/>
+        <input type="text" name="bcomment" value="{{Articlelist.bcomment}}"/>
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

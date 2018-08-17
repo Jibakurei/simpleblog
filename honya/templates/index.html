@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Python-django</title>
+</head>
+<body>
+<a href="/add/">新增</a>
+<ul>
+    {%for book in now%}
+
+    <li>书名：{{book.title}}--<a href="/dels/{{book.id}}/">删除</a><a href="/edit/{{book.id}}/">修改</a></li>
+
+    {%endfor%}
+</ul>
+<br/>
+<br/>
+
+<h2>所有英雄如下：</h2>
+<ul>
+    {% for hero in now%}
+    <li>姓名：{{hero.title}}--大招：{{ hero.content}}</li>
+    {% endfor %}
+</ul>
+<ul>
+<!-- <script type="text/javascript">
+var books = {{books|safe}};
+var heros = {{heros|safe}};
+alert(books)
+</script> -->
+</ul>
+</body>
+</html>
