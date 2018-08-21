@@ -3,6 +3,7 @@ from .models import ArticleInfo,UserInfo
 from .form import ArticleInfoForm,UserInfoForm
 from django.http import HttpResponse
 from django.template import Template,Context
+import json
 # Create your views here.
 def select(request):
     now = ArticleInfo.objects.all()
@@ -78,3 +79,31 @@ def edit(request,aid):
 #         return render(request, '/', Context({'uf':uf}))
 
 
+def api(request):
+    response = {'code':1000,'data':None}
+    response['data'] = [
+        {'name':'haiyan','age':22},
+        {'name':'haidong','age':10},
+        {'name':'haixiyu','age':11},
+    ]
+    return HttpResponse(json.dumps(response))
+    pass
+
+def users(request):
+    response = {'code':1000,'data':None}  #code用来表示状态，比如1000代表成功，1001代表
+    response['data'] = [
+        {'name':'haiyan','age':22},
+        {'name':'haidong','age':10},
+        {'name':'haixiyu','age':11},
+    ]
+    return HttpResponse(json.dumps(response))  #返回多条数据
+
+def user(request,pk):
+    if request.method =='GET':
+        return HttpResponse(json.dumps({'name':'haiyan','age':11}))  #返回一条数据
+    elif request.method =='POST':
+        return HttpResponse(json.dumps({'code':1111}))  #返回一条数据
+    elif request.method =='PUT':
+        pass
+    elif request.method =='DELETE':
+        pass

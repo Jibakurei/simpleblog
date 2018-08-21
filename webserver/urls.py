@@ -21,6 +21,7 @@ from honya import views as  honya_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/$',honya_views.api,name='api'),
     url(r'^$',select,name='select'),
     url(r'^add/$', honya_views.add, name='add'), 
     url(r'^edit/(\d+)/$',honya_views.edit,name='edit'),
